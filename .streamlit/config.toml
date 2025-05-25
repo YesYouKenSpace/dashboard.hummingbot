@@ -4,3 +4,4 @@ font="monospace"
 [server]
 port=8501
 maxUploadSize = 700
+runOnSave = true
