@@ -42,8 +42,11 @@ install-pre-commit:
 	    pip install pre-commit; \
 	fi && pre-commit install'
 
-docker_build:
-	docker build -t hummingbot/dashboard:latest .
+docker_push:
+	@read -p "Enter docker tag: " TAG; \
+	docker build -t yesyouken/dashboard.hummingbot:latest -t yesyouken/dashboard.hummingbot:$$TAG .; \
+	docker push yesyouken/dashboard.hummingbot:latest; \
+	docker push yesyouken/dashboard.hummingbot:$$TAG
 
 docker_run:
-	docker run -p 8501:8501 hummingbot/dashboard:latest
+	docker run -p 8501:8501 yesyouken/dashboard.hummingbot:latest
